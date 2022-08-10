@@ -27,3 +27,8 @@ output "Jenkins-Worker-Private-IPs" {
 output "url" {
   value = aws_route53_record.jenkins.fqdn
 }
+
+#Add LB DNS name to outputs.tf
+output "LB-DNS-NAME" {
+  value = aws_lb.application-lb.dns_name
+}

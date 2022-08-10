@@ -21,7 +21,7 @@ resource "aws_lb_target_group" "app-lb-tg" {
   target_type = "instance"
   vpc_id      = aws_vpc.vpc_master.id
   protocol    = "HTTP"
-  health_check {        
+  health_check {
     enabled  = true
     interval = 10
     path     = "/"
@@ -40,10 +40,10 @@ resource "aws_lb_listener" "jenkins-listener-http" {
   port              = "80"
   protocol          = "HTTP"
   default_action {
-    type             = "redirect"
+    type = "redirect"
     redirect {
-      port = "443"
-      protocol = "HTTPS"
+      port        = "443"
+      protocol    = "HTTPS"
       status_code = "HTTP_301"
     }
   }

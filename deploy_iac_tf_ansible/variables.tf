@@ -34,10 +34,9 @@ variable "instance-type" {
 #Add the variable webserver-port to variables.tf
 variable "webserver-port" {
   type    = number
-  default = 80
+  default = 8080
 }
-
-#Add LB DNS name to outputs.tf
-output "LB-DNS-NAME" {
-  value = aws_lb.application-lb.dns_name
+variable "dns-name" {
+  type    = string
+  default = "cmcloudlab1876.info"
 }
