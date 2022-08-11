@@ -82,8 +82,14 @@ EOF
   }
 
   provisioner "remote-exec" {
-    when   = destory
+    when = destory
     inline = ["java -jar /home/ec2-user/jenkins-cli.jar -auth @/home/ec2-user/jenkins_auth -s http://${aws_instance.jenkins-master.private.ip}:8080 -auth @/home/ec2-user/jenkins_auth delete-node ${self.private.ip}"]
+    connection {
+      type = "ssh"
+      user = "ec2-user"
+      private_key = file("~/.ssh/id_rsa")
+      host = self.public_ip
+    }
   }
 }
 
